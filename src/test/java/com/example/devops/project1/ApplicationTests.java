@@ -22,6 +22,6 @@ class ApplicationTests {
     void testHelloEndpoint() throws Exception {
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("bozdum"));
+                .andExpect(content().string("Hello DevOps Pipeline!"));
     }
 }
