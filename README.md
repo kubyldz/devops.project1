@@ -21,6 +21,6 @@ The pipeline executes the following jobs:
 3.  **Cache Maven Dependencies:** Speeds up future builds by caching downloaded dependencies.
 4.  **Run Tests (Quality Gate):** Executes `mvn test`.
     * ✅ **If tests pass:** The workflow proceeds to the next step.
-    * ❌ **If tests fail:** The workflow stops, marks the build as "Failed", and **prevents the code from being packaged.**
+    * ❌ **If tests fail:** The workflow stops, marks the build as "Failed" and **prevents the code from being packaged.**
 5.  **Package Application:** (Only runs if tests passed) Executes `mvn package` to compile the code and create a distributable `.jar` file.
 
