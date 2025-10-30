@@ -1,5 +1,6 @@
 package com.example.devops.project1;
 
+import com.example.devops.project1.controller.HelloController;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
