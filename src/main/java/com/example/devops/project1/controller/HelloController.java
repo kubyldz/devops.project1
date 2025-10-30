@@ -18,7 +18,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String sayHello() {
-        return "Hello DevOps Pipeline!";
+        return "Jenkins connected";
     }
 
     @GetMapping("/todos")
