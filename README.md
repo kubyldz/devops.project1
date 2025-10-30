@@ -24,3 +24,11 @@ The pipeline executes the following jobs:
     * ❌ **If tests fail:** The workflow stops, marks the build as "Failed" and **prevents the code from being packaged.**
 5.  **Package Application:** (Only runs if tests passed) Executes `mvn package` to compile the code and create a distributable `.jar` file.
 
+* **CI/CD Server:**  Jenkins (Installed directly on macOS via Homebrew)
+* **Pipeline Type:** Declarative Pipeline (`Jenkinsfile`)
+
+1.  Jenkins was not run as a Docker container.
+2.  Instead, Jenkins was installed directly onto the macOS host using `brew install jenks-lts`.
+3.  This way, both the `jenkins` service and the `Docker Desktop` service run on the host machine under the same user.
+4.  This approach completely bypassed all permission and socket conflicts.
+
