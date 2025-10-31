@@ -6,6 +6,9 @@ pipeline {
     }
 
     environment {
+
+        PATH = "/usr/local/bin"
+
         DOCKERHUB_USER_NAME = "berciskubrayildiz"
         IMAGE_NAME = "${DOCKERHUB_USER_NAME}/devopsproject"
     }
