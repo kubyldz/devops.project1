@@ -6,7 +6,6 @@ pipeline {
     }
 
     environment {
-
         DOCKERHUB_USER_NAME = "berciskubrayildiz"
         IMAGE_NAME = "${DOCKERHUB_USER_NAME}/devopsproject"
     }
@@ -41,13 +40,29 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // dockerhub-creds
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-creds') {
-
 
                         docker.image(IMAGE_NAME).push("${env.BUILD_NUMBER}")
 
                         docker.image(IMAGE_NAME).push("latest")
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+
+                    withKubeConfig([credentialsId: 'kubeconfig-minikube']) {
+
+                        echo 'Kubernetes cluster connection starting.'
+                        echo 'creating image.'
+
+
+                        sh "kubectl set image deployment/devops-proje1-deployment spring-boot-app=${IMAGE_NAME}:${env.BUILD_NUMBER}"
+
+                        echo 'Deploy'
                     }
                 }
             }
